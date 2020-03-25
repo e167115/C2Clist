@@ -1,7 +1,8 @@
-        <div class="card">
-            <div class="card-body text-center">
-                <p><img class="rounded" src="https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}" alt="card image"></p>
-                <h4 class="card-title"><%= @user.name %></h4>
-                <p class="card-text"><%= @user.profile %></p>
-            </div>
-        </div>
+
+    <div class="text-center">
+        <p><img class="rounded" src="https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}" alt="user-image"></p>
+        <h3><%= @user.name %></h3>
+        <p><%= @user.profile %></p>
+    </div>
+    <%= link_to "ホームに戻る", root_path %>
+    <%= link_to "会員情報編集", edit_user_path %>
