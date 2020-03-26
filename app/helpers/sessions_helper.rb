@@ -22,7 +22,7 @@ module SessionsHelper
 
 
     def correct_user
-        if @user == @current_user
+        if @user == current_user
             return true
         else
         redirect_to login_url
