@@ -1,0 +1,24 @@
+<table class="table table-bordered">
+  <tr>
+    <th>ジャンル</th>
+    <td><%= @category.name %></td>
+  </tr>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @post.title %></td>
+  </tr>
+  <tr>
+    <th>内容</th>
+    <td><%= @post.content %></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td><%= @user.name %>さんによる投稿</td>
+  </tr>
+</table>
+
+<% if current_user == @post.user %>
+    <%= link_to 'このメッセージを編集する', edit_post_path(@post), class: 'btn btn-light' %>
+    <%= link_to 'このメッセージを削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+    <%= link_to '一覧に戻る', root_url, class: 'btn btn-success' %>
+<% end %>    
