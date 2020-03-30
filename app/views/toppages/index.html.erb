@@ -33,8 +33,8 @@
     <tbody>
       <% @posts.each do |post| %>
           <tr>
-              <td><%= post.category.name %></td>
-              <td><%= link_to post.title, post, class: "stretched-link" %></td>
+              <td><%= link_to post.category.name, post %></td>
+              <td><%= link_to post.title, post %></td>
           </tr>
       <% end %>
     </tbody>
