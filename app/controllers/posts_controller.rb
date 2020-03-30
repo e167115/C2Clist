@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by(id: params[:id])
-    if @post.save(post_params)
+    if @post.update(post_params)
       flash[:success] = '投稿を更新しました'
       redirect_to @post
     else
