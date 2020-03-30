@@ -1,14 +1,10 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :edit]
-  before_action :correct_user, only: [:update]
+  before_action :require_user_logged_in, only: [:edit]
   
-  
-  def index
-  end
 
   def show
     @user = User.find(params[:id])
-      
+    @posts = @user.posts.order(id: :desc).page(params[:page])
   end
 
   def new
@@ -41,6 +37,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
 end
 
 

@@ -1,9 +1,43 @@
 
-    <div class="text-center">
+<div class="text-center">
         <p><img class="rounded" src="https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}" alt="user-image"></p>
         <h3><%= @user.name %></h3>
         <p><%= @user.profile %></p>
         
-    <%= link_to "ホームに戻る", root_path, class: "btn btn-info" %>
-    <%= link_to "会員情報編集", edit_user_path, class: "btn btn-danger" %>
-    </div>
+       <h2>投稿したポスト</h2>
+   
+       <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>投稿ナンバー</th>
+            <th>ジャンル</th>
+            <th>タイトル</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= link_to post.id, post %></td>
+              <td><%= link_to post.category.name, post %></td>
+              <td><%= link_to post.title, post %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+   
+    
+        
+    
+    
+    <% if current_user == @user %>    
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <%= link_to "ホームに戻る", root_path, class: "btn btn-info" %>
+          <%= link_to "会員情報編集", edit_user_path, class: "btn btn-success" %>
+          <%= link_to "ログアウト", logout_path, method: :delete, class: "btn btn-danger" %>
+        </div>
+      </div>  
+    <% else %>
+          <%= link_to "ホームに戻る", root_path, class: "btn btn-info" %>
+    <% end %>    
+</div>    

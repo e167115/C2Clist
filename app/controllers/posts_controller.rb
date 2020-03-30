@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :require_user_logged_in, onry: [:create]
+  before_action :require_user_logged_in, only: [:create, :edit]
+  
   def show
     @post = Post.find_by(id: params[:id])
     @category = Category.find_by(id: @post.category_id)
