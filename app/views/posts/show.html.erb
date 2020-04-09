@@ -3,7 +3,18 @@
   <strong>ジャンル</strong><br>
   <mark><%= @category.name %></mark>
 </div>
+  
+  <div class="row mb-5">
+    <div class="col-sm-4 offset-sm-4">
+   <% if @post.image? %>
+     <%= image_tag @post.image.url, :size =>'410x300' %>
+   <% end %>
+    </div>
+  </div>
+  
 <table class="table table-bordered text-center">
+  
+
   <tr>
     <th><%= @post.title %></th>
   </tr>
