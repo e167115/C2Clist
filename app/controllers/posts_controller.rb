@@ -1,6 +1,21 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in, only: [:create, :edit]
   
+  
+  def index
+    if params[:category_id]
+      #カテゴリーDBのテーブルから一致するidを取得
+      @category = Category.find(params[:category_id])
+      
+      #category_id と紐づいた投稿を取得
+      @posts = @category.posts.order(id: :desc).page(params[:page])
+      @categories = Category.all
+    else
+      @posts = Post.all.order(id: :desc).page(params[:page])
+      @categories = Category.all
+    end
+  end
+  
   def show
     @post = Post.find_by(id: params[:id])
     @category = Category.find_by(id: @post.category_id)

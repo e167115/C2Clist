@@ -10,22 +10,16 @@
 <h4 class="text-center">カテゴリ一覧</h4>
   
   <div class="row mb-5">
-    <div class="col-sm-7 offset-sm-3">
-      <div class="btn-toolbar">
-          <div class="byn-group">
-              <a href = "/?category_id=1" class="btn btn-secondary">売ります・買います</a>
-              <a href = "/?category_id=2" class="btn btn-secondary">中古車</a>
-              <a href = "/?category_id=3" class="btn btn-secondary">バイト</a>
-              <a href = "/?category_id=4" class="btn btn-secondary">助け合い</a>
-              <a href = "/?category_id=5" class="btn btn-secondary">メンバー募集</a>
-          </div>
-      </div>  
-    </div>
-  </div>  
+    <div class="col-sm-6 offset-sm-3">
+      <% @categories.each do |category| %>
+        <mark><%= category.name %><span></span></mark>
+      <% end %>
+    </div>  
+  </div>
   
   
   
-<div class="text-center"><h4>投稿一覧</h4></div>
+<div class="text-center mt-5"><h4>投稿一覧</h4></div>
 
 
 <% if @posts.any? %>
@@ -39,7 +33,7 @@
     <tbody>
       <% @posts.each do |post| %>
           <tr>
-              <td><%= post.category.name %></td>
+              <td><%= link_to post.category.name, post %></td>
               <td><%= link_to post.title, post %></td>
           </tr>
       <% end %>
@@ -55,5 +49,4 @@
 <% if logged_in? %>
  <%= link_to '新規投稿', new_post_path, class: "btn btn-primary" %>
 <% end %>
-
 

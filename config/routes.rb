@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     
     resources :posts
     
-    resources :categories, only: [:show]
+    resources :categories, only: [:show, :index]
 end
 
