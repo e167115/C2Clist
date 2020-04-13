@@ -36,6 +36,7 @@
       <%= link_to '投稿を編集する', edit_post_path(@post), class: 'btn btn-light' %>
       <%= link_to '投稿をを削除する', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
       <%= link_to '一覧に戻る', root_url, class: 'btn btn-success' %>
+      <%= render "favorites/like_button", post: @post %>
     </div>
   </div>  
 <% else %>

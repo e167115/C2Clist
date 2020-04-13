@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :posts
     
     resources :categories, only: [:show, :index]
+    resources :favorites, only: [:create, :destroy]
 end
 

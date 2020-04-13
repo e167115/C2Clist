@@ -1,0 +1,11 @@
+  <% if current_user.favoriting?(post) %>
+    <%= form_with(model: current_user.favorites.find_by(post_id: post.id), local: true, method: :delete, class: "form-inline" ) do |f| %>
+      <%= hidden_field_tag :like_id, post.id %>
+      <%= f.submit 'unlike', class: 'btn btn-secondary btn-sm mb-2' %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.favorites.build, local: true, class: "form-inline") do |f| %>
+      <%= hidden_field_tag :like_id, post.id %>
+      <%= f.submit 'like', class: 'btn btn-primary btn-sm mb-2' %>
+    <% end %>
+  <% end %>
